@@ -1,0 +1,51 @@
+package TS_04;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TC_12 {
+
+	public static void main(String[] args) throws Exception {
+		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
+
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.webmath.com/");
+		driver.manage().window().maximize();
+		Thread.sleep(3000);
+
+		// Click on Math for Everyone option.
+		driver.findElement(By.id("navBox-1")).click();
+		Thread.sleep(3000);
+
+		// Click on mass.
+		driver.findElement(By.xpath("//*[@href='convert_mass.html']")).click();
+		Thread.sleep(3000);
+
+		// Calculation
+		driver.findElement(By.xpath("//*[@name='param0']")).sendKeys("150");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@name='param1']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(
+				"/html/body/div/div[2]/div[1]/div/div[3]/div[1]/div[2]/table/tbody/tr/td[2]/font/form/b/center/p[1]/select/option[3]"))
+				.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@name='param2']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(
+				"/html/body/div/div[2]/div[1]/div/div[3]/div[1]/div[2]/table/tbody/tr/td[2]/font/form/b/center/p[3]/select/option[4]"))
+				.click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@type='submit']")).click();
+		Thread.sleep(5000);
+
+		// CLick on Back
+		driver.findElement(By.xpath("/html/body/div/div[2]/div[1]/div/div[3]/a/img")).click();
+
+		Thread.sleep(3000);
+		driver.close();
+
+	}
+
+}
